@@ -19,6 +19,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&family=Schibsted+Grotesk:wght@400..900&display=swap">
+<script>
+/* Keep this shared link current. GitHub Pages lets browsers reuse a page for up to
+   10 minutes, and phones restore open tabs without reloading. On load and whenever
+   the tab comes back, ask the server when the page last changed; if the copy on
+   screen is older, refresh the cached copy and reload once. */
+(function () {
+  var KEY = 'sj-refreshed:' + location.pathname, lastCheck = 0;
+  function ms(v) { var n = Date.parse(v || ''); return isNaN(n) ? 0 : n; }
+  function check() {
+    lastCheck = Date.now();
+    if (!window.fetch) return;
+    fetch(location.pathname, { cache: 'reload', credentials: 'same-origin' }).then(function (r) {
+      var live = ms(r.headers.get('last-modified')), shown = ms(document.lastModified);
+      if (!r.ok || !live || !shown || live - shown < 1500) return;
+      var done = null;
+      try { done = sessionStorage.getItem(KEY); } catch (e) {}
+      if (done === String(live)) return;
+      try { sessionStorage.setItem(KEY, String(live)); } catch (e) {}
+      location.reload();
+    }).catch(function () {});
+  }
+  check();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && Date.now() - lastCheck > 20000) check();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) check(); });
+})();
+</script>
 <script src="dc-runtime.js"></script>
 </head>
 <body>
