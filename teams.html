@@ -47,6 +47,48 @@
   window.addEventListener('pageshow', function (e) { if (e.persisted) check(); });
 })();
 </script>
+<script>
+/* Audience switch: slide the highlight to the chosen side (200ms), then open that page.
+   Listens on the document because the header is rendered after this script runs. */
+(function () {
+  var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  function addInk(sw) {
+    var thumb = sw.querySelector('.sj-switch-thumb');
+    if (thumb.firstElementChild) return;
+    var row = document.createElement('span');
+    row.className = 'sj-switch-ink';
+    sw.querySelectorAll('.sj-switch-opt').forEach(function (o) {
+      var c = document.createElement('span'); c.className = 'sj-switch-opt'; c.innerHTML = o.innerHTML; row.appendChild(c);
+    });
+    thumb.appendChild(row);
+  }
+  function place(sw, el) {
+    var thumb = sw.querySelector('.sj-switch-thumb');
+    thumb.style.width = el.offsetWidth + 'px';
+    thumb.style.transform = 'translateX(' + el.offsetLeft + 'px)';
+    thumb.firstElementChild.style.transform = 'translateX(' + -el.offsetLeft + 'px)';
+  }
+  document.addEventListener('click', function (e) {
+    var opt = e.target && e.target.closest ? e.target.closest('a.sj-switch-opt') : null;
+    var sw = opt && opt.closest('.sj-switch');
+    if (!sw || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (opt.getAttribute('aria-current') === 'page') { e.preventDefault(); return; }
+    var from = sw.querySelector('a[aria-current="page"]');
+    if (reduce.matches || !from || !sw.querySelector('.sj-switch-thumb')) return;
+    e.preventDefault();
+    addInk(sw);
+    sw.classList.add('no-anim', 'is-sliding');
+    place(sw, from);
+    void sw.offsetWidth;
+    sw.classList.remove('no-anim');
+    place(sw, opt);
+    setTimeout(function () { window.location.href = opt.href; }, 200);
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) document.querySelectorAll('.sj-switch.is-sliding').forEach(function (sw) { sw.classList.remove('is-sliding'); });
+  });
+})();
+</script>
 <script src="dc-runtime.js"></script>
 </head>
 <body>
@@ -88,6 +130,29 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 .sj-bordered{border-left:0 !important;border-right:0 !important}
 }
 #dc-root h1,#dc-root h2,#dc-root h3{text-wrap:balance}
+/* audience switch: For jurors | For research teams */
+.sj-switch{--sw-pad:3px;--sw-on:#2D3DF5;--sw-on-text:#FFFFFF;--sw-off-text:#4A5070;--sw-on-shadow:0 1px 2px rgba(11,16,51,.12),0 6px 14px -6px rgba(45,61,245,.65);--sw-ease:cubic-bezier(.4,0,.2,1);position:relative;isolation:isolate;display:inline-flex;align-items:center;flex:none;padding:var(--sw-pad);border-radius:999px;background:#EEF1FF;box-shadow:inset 0 0 0 1px #E0E4F6}
+.sj-switch-opt{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 16px;border-radius:999px;color:var(--sw-off-text);font-size:14px;line-height:1.2;font-weight:700;text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:color .15s ease,background-color .15s ease}
+.sj-switch-opt:hover{color:#0B1033;background:rgba(255,255,255,.75)}
+.sj-switch-opt[aria-current="page"]{cursor:default;background:var(--sw-on);color:var(--sw-on-text);box-shadow:var(--sw-on-shadow)}
+.sj-switch .sj-switch-opt:focus-visible{outline:2px solid #2D3DF5;outline-offset:2px}
+.sj-switch-short{display:none}
+.sj-switch-thumb{position:absolute;z-index:2;top:var(--sw-pad);bottom:var(--sw-pad);left:0;width:0;overflow:hidden;border-radius:999px;background:var(--sw-on);box-shadow:var(--sw-on-shadow);opacity:0;pointer-events:none;transition:transform .2s var(--sw-ease),width .2s var(--sw-ease)}
+.sj-switch-ink{position:absolute;top:calc(-1 * var(--sw-pad));left:0;display:flex;align-items:center;padding:var(--sw-pad);transition:transform .2s var(--sw-ease)}
+.sj-switch-ink .sj-switch-opt{color:var(--sw-on-text)}
+.sj-switch.is-sliding .sj-switch-thumb{opacity:1}
+.sj-switch.is-sliding a.sj-switch-opt{background:transparent;box-shadow:none;color:var(--sw-off-text);transition:none}
+.sj-switch.no-anim .sj-switch-thumb,.sj-switch.no-anim .sj-switch-ink{transition:none}
+@media (max-width:560px){
+.sj-switch-opt{min-height:40px;padding:0 13px;font-size:13.5px}
+.sj-switch-full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.sj-switch-short{display:inline}
+}
+@media (max-width:380px){.sj-switch-opt{padding:0 10px;font-size:13px}}
+@media (max-width:359px){.sj-switch{flex:1 1 100%}.sj-switch-opt{flex:1 1 auto}}
+@media (max-width:980px){.t-nav-link{display:none !important}}
+@media (max-width:640px){.t-nav-cta{display:none !important}}
+@media (max-width:359px){.t-links{flex:1 1 100%}.t-links .sj-switch{flex:1 1 100%}}
 #dc-root h1,#dc-root h2,#dc-root h3{font-family:'Schibsted Grotesk','Figtree',system-ui,sans-serif}
 #dc-root p,#dc-root li,#dc-root dd{text-wrap:pretty}
 .sj-btn{transition:filter .15s ease,transform .15s ease}
@@ -362,8 +427,8 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </helmet>
 <div class="t-page" style="--accent: {{accent}};">
 <header class="t-header"><nav class="t-nav" aria-label="Main">
-<a class="t-brand" href="#top"><svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" class="t-logo"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg><span class="t-brand-sub sj-hide-sm">for research teams</span></a>
-<div class="t-links"><a class="t-link sj-hide-sm" href="#how" sc-camel-on-click="{{ toHow }}">How it works</a><a class="t-link sj-hide-sm" href="#quality" sc-camel-on-click="{{ toQuality }}">Data quality</a><a class="t-link" href="./">For jurors</a><a class="t-btn t-btn-dark t-btn-sm sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a></div></nav></header>
+<a class="t-brand" href="#top"><svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" class="t-logo"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg></a>
+<div class="t-links"><a class="t-link t-nav-link" href="#how" sc-camel-on-click="{{ toHow }}">How it works</a><a class="t-link t-nav-link" href="#quality" sc-camel-on-click="{{ toQuality }}">Data quality</a><a class="t-btn t-btn-dark t-btn-sm sj-btn t-nav-cta" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a><div class="sj-switch"><span class="sj-switch-thumb" aria-hidden="true"></span><a class="sj-switch-opt" href="./"><span class="sj-switch-full">For jurors</span><span class="sj-switch-short" aria-hidden="true">Jurors</span></a><a class="sj-switch-opt" href="teams.html" aria-current="page"><span class="sj-switch-full">For research teams</span><span class="sj-switch-short" aria-hidden="true">Research teams</span></a></div></div></nav></header>
 <main id="top">
 <section class="t-band t-band-first"><div class="t-hero">
 <div class="t-hero-glow" aria-hidden="true"></div><div class="t-dots" aria-hidden="true"></div>
