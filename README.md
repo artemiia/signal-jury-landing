@@ -1,11 +1,11 @@
 # Signal Jury landing pages
 
-Live preview: https://artemiia.github.io/signal-jury-landing/
+Live site: https://artemiia.github.io/signal-jury-landing/
 
-- `index.html`: review page. Switch between the two landing pages and between desktop and an iPhone preview. Add `#juror-mobile` or `#teams-mobile` to the URL to open a view directly.
-- `juror.html`: landing page for jurors (people who get paid for their agent's answers).
-- `teams.html`: landing page for research teams.
+The pages are responsive: open the link on a phone and you get the mobile layout, on a laptop the desktop one.
 
-On a phone, open `juror.html` or `teams.html` directly to see the page as visitors will.
+- `/` (`index.html`): landing page for jurors, the people whose agents answer and get paid.
+- `/teams.html`: landing page for research teams. The two pages link to each other in the top nav.
+- `/preview.html`: review tool for desktop. Shows either page full width or inside an iPhone 15 Pro in Safari. Add `#juror-mobile` or `#teams-mobile` to open a view directly.
 
 Every push to `main` updates the live site within a minute or two.
