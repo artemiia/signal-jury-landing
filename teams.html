@@ -204,50 +204,74 @@
 </style>
 <style>
 body{margin:0;background:#FFFFFF}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 a{color:#2D3DF5}a:hover{color:#1A27C9}
-@media (max-width: 560px){.sj-hide-sm{display:none !important}}
+::selection{background:#DDE1FF;color:#0B1033}
+:root{--sj-body:15px;--sj-nav-pad:8px 24px;--sj-logo-w:146px;--sj-logo-h:26px;--sj-navlink-fs:14px;--sj-navlinks-gap:20px;--sj-navbtn-h:44px;--sj-navbtn-px:20px;--sj-navbtn-fs:14px;--sj-outer:12px;--sj-gutter:24px;--sj-sec:56px;--sj-panel-r:32px;--sj-panel-pad:clamp(28px,4vw,48px) clamp(16px,4vw,52px);--sj-hero-pad:28px clamp(16px,4vw,52px);--sj-darkhero-pad:clamp(24px,4vw,52px) clamp(16px,4vw,52px);--sj-gap:20px;--sj-row-gap:32px;--sj-pill-pad:6px 14px;--sj-pill-fs:13px;--sj-h1:clamp(38px,4.4vw,64px);--sj-h1-teams:clamp(34px,4vw,56px);--sj-h1-mt:16px;--sj-stats-mt:22px;--sj-callout-pad:10px 16px;--sj-callout-fs:15px;--sj-form-mt:16px;--sj-form-r:20px;--sj-ctl-h:48px;--sj-ctl-r:14px;--sj-fine:13px;--sj-card-gap:12px;--sj-step-pad:16px 18px;--sj-step-r:18px;--sj-step-fs:15px;--sj-step-desc:13px;--sj-lede:18px;--sj-lede-mt:18px;--sj-actions-mt:28px;--sj-btn-h:50px;--sj-btn-px:24px;--sj-verdict-r:24px;--sj-verdict-pad:22px 24px;--sj-verdict-fs:14px;--sj-h2:clamp(28px,3vw,38px);--sj-intro:17px;--sj-intro2:16px;--sj-card-r:20px;--sj-card-pad:22px;--sj-quote:17px;--sj-h3:17px;--sj-h4:16px;--sj-small:14px;--sj-cta-list:15px}
+@media (max-width:560px){
+:root{--sj-body:14.5px;--sj-nav-pad:6px 20px;--sj-logo-w:124px;--sj-logo-h:22px;--sj-navlink-fs:13.5px;--sj-navlinks-gap:14px;--sj-navbtn-h:38px;--sj-navbtn-px:14px;--sj-navbtn-fs:13px;--sj-outer:6px;--sj-gutter:20px;--sj-sec:36px;--sj-panel-r:24px;--sj-panel-pad:28px 14px;--sj-hero-pad:22px 14px;--sj-darkhero-pad:26px 14px;--sj-gap:16px;--sj-row-gap:24px;--sj-pill-pad:5px 12px;--sj-pill-fs:12px;--sj-h1:31px;--sj-h1-teams:30px;--sj-h1-mt:12px;--sj-stats-mt:18px;--sj-callout-pad:9px 12px;--sj-callout-fs:13.5px;--sj-form-mt:14px;--sj-form-r:16px;--sj-ctl-h:44px;--sj-ctl-r:12px;--sj-fine:12px;--sj-card-gap:10px;--sj-step-pad:13px 14px;--sj-step-r:14px;--sj-step-fs:14px;--sj-step-desc:12.5px;--sj-lede:15.5px;--sj-lede-mt:12px;--sj-actions-mt:20px;--sj-btn-h:46px;--sj-btn-px:20px;--sj-verdict-r:20px;--sj-verdict-pad:18px 16px;--sj-verdict-fs:13.5px;--sj-h2:24px;--sj-intro:15px;--sj-intro2:15px;--sj-card-r:16px;--sj-card-pad:16px;--sj-quote:15.5px;--sj-h3:15.5px;--sj-h4:15px;--sj-small:13.5px;--sj-cta-list:14px}
+.sj-hide-sm{display:none !important}
+.sj-phone{zoom:.82}
+.sj-stats{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important}
+.sj-stats>div{padding:10px 12px !important}
+.sj-stats dt{font-size:11.5px !important}
+.sj-stats dd{font-size:15px !important}
+}
+#dc-root h1,#dc-root h2,#dc-root h3{text-wrap:balance}
+#dc-root p,#dc-root li,#dc-root dd{text-wrap:pretty}
+.sj-btn{transition:filter .15s ease,transform .15s ease}
+.sj-btn:hover{filter:brightness(1.12)}
+.sj-btn:active{transform:translateY(1px)}
+.sj-navlink{transition:color .15s ease}
+.sj-navlink:hover{color:#2D3DF5 !important}
+.sj-foot a:hover{color:#0B1033 !important}
+.sj-lift{box-shadow:0 1px 2px rgba(11,16,51,.04),0 8px 20px -14px rgba(11,16,51,.22)}
+#dc-root a:focus-visible,#dc-root button:focus-visible{outline:2px solid #2D3DF5;outline-offset:2px}
+#signup input:focus{outline:none}
+#signup:focus-within{box-shadow:0 0 0 2px #2D3DF5}
+#pilot input:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
 </style>
 </helmet>
-<div style="background: #FFFFFF; color: #0B1033; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.55;">
+<div style="background: #FFFFFF; color: #0B1033; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: var(--sj-body); line-height: 1.55;">
 
 <header>
-<nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 8px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px;">
+<nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-nav-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px;">
 <a href="#top" style="display: flex; align-items: center; gap: 10px; min-height: 44px; color: #0B1033; text-decoration: none; font-weight: 800; font-size: 20px; letter-spacing: -0.02em;">
-<svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" style="flex: 0 0 auto; overflow: visible;"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg>
-<span style="margin-top: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #4A5070;">for research teams</span>
+<svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" style="flex: 0 0 auto; overflow: visible; width: var(--sj-logo-w); height: var(--sj-logo-h);"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg>
+<span class="sj-hide-sm" style="margin-top: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #4A5070;">for research teams</span>
 </a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px;">
-<a class="sj-hide-sm" href="#quality" sc-camel-on-click="{{ toQuality }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">Data quality</a>
-<a class="sj-hide-sm" href="#about" sc-camel-on-click="{{ toAbout }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">About us</a>
-<a href="./" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">For jurors</a>
-<a href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #0B1033; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700;">Convene a jury</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sj-navlinks-gap);">
+<a class="sj-hide-sm sj-navlink" href="#quality" sc-camel-on-click="{{ toQuality }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">Data quality</a>
+<a class="sj-hide-sm sj-navlink" href="#about" sc-camel-on-click="{{ toAbout }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">About us</a>
+<a class="sj-navlink" href="./" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: var(--sj-navlink-fs); font-weight: 600;">For jurors</a>
+<a class="sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: var(--sj-navbtn-h); padding: 0 var(--sj-navbtn-px); border-radius: 999px; background: #0B1033; color: #FFFFFF; text-decoration: none; font-size: var(--sj-navbtn-fs); font-weight: 700;">Convene a jury</a>
 </div>
 </nav>
 </header>
 
 <main id="top">
 
-<section style="padding: 4px 12px 0;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: 32px; background: #0B1033; color: #FFFFFF; padding: clamp(24px, 4vw, 52px) clamp(16px, 4vw, 52px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 32px 48px;">
+<section style="padding: 4px var(--sj-outer) 0;">
+<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: #0B1033; color: #FFFFFF; padding: var(--sj-darkhero-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sj-row-gap) 48px;">
 <div style="flex: 999 1 460px; min-width: 0;">
-<p style="margin: 0; display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); font-size: 13px; font-weight: 700; color: #C9CCE6;">Real people's own agents, not AI personas</p>
-<h1 style="margin: 16px 0 0; max-width: 640px; font-size: clamp(34px, 4vw, 56px); line-height: 1.04; font-weight: 800; letter-spacing: -0.035em;">Bots don't buy your product. <span style="color: #9DA6FF;">Stop asking them.</span></h1>
-<p style="margin: 18px 0 0; max-width: 540px; font-size: 18px; line-height: 1.5; color: #C9CCE6;">Signal Jury puts your question to people who opted in, through the AI agents that already know them. Every answer is paid, and kept exactly as given.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;">
-<a href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700;">Convene a jury</a>
-<a href="#questions" sc-camel-on-click="{{ toQuestions }}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 50px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.4); color: #FFFFFF; text-decoration: none; font-weight: 700;">See example questions <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
+<p style="margin: 0; display: inline-block; padding: var(--sj-pill-pad); border-radius: 999px; background: rgba(255, 255, 255, 0.1); font-size: var(--sj-pill-fs); font-weight: 700; color: #C9CCE6;">Real people's own agents, not AI personas</p>
+<h1 style="margin: var(--sj-h1-mt) 0 0; max-width: 640px; font-size: var(--sj-h1-teams); line-height: 1.04; font-weight: 800; letter-spacing: -0.035em;">Bots don't buy your product. <span style="color: #9DA6FF;">Stop asking them.</span></h1>
+<p style="margin: var(--sj-lede-mt) 0 0; max-width: 540px; font-size: var(--sj-lede); line-height: 1.5; color: #C9CCE6;">Signal Jury puts your question to people who opted in, through the AI agents that already know them. Every answer is paid, and kept exactly as given.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--sj-actions-mt);">
+<a class="sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: var(--sj-btn-h); padding: 0 var(--sj-btn-px); border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700;">Convene a jury</a>
+<a class="sj-btn" href="#questions" sc-camel-on-click="{{ toQuestions }}" style="display: inline-flex; align-items: center; gap: 6px; min-height: var(--sj-btn-h); padding: 0 var(--sj-btn-px); border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.4); color: #FFFFFF; text-decoration: none; font-weight: 700;">See example questions <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
 </div>
 </div>
 
-<figure style="flex: 1 1 340px; max-width: 450px; min-width: 0; margin: 0; border-radius: 24px; padding: 22px 24px; background: #FFFFFF; color: #0B1033; box-sizing: border-box; font-size: 14px; box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5);">
+<figure style="flex: 1 1 340px; max-width: 450px; min-width: 0; margin: 0; border-radius: var(--sj-verdict-r); padding: var(--sj-verdict-pad); background: #FFFFFF; color: #0B1033; box-sizing: border-box; font-size: var(--sj-verdict-fs); box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5);">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
 <span style="font-weight: 800; font-size: 16px;">The verdict</span>
 <span style="font-size: 11px; font-weight: 600; color: #4A5070; border: 1px solid #D5D9EA; border-radius: 6px; padding: 0 6px; white-space: nowrap;">Example</span>
 </div>
 <p style="margin: 6px 0 0; font-size: 13px; color: #4A5070;">Every opted-in juror · n = [N]</p>
 <p style="margin: 16px 0 8px; font-weight: 700;">Which lawn mower did you buy last, and what did you pay?</p>
-<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0 16px; font-size: 13px;">
+<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0 16px; font-size: 13px; font-variant-numeric: tabular-nums;">
 <span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600;">Type</span><span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600; text-align: right;">Share</span><span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600; text-align: right;">Median paid</span>
 <span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Battery push</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">46%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$399</span>
 <span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Gas push</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">27%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$329</span>
@@ -259,52 +283,52 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </div>
 </section>
 
-<section id="questions" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 0; box-sizing: border-box; scroll-margin-top: 16px;">
-<h2 style="margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Your customers' own words, without recruiting a panel</h2>
-<p style="margin: 12px 0 0; max-width: 640px; font-size: 17px; color: #4A5070;">Each agent answers from what its person has shared or approved, and asks them when unsure.</p>
+<section id="questions" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter) 0; box-sizing: border-box; scroll-margin-top: 16px;">
+<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Your customers' own words, without recruiting a panel</h2>
+<p style="margin: 12px 0 0; max-width: 640px; font-size: var(--sj-intro); color: #4A5070;">Each agent answers from what its person has shared or approved, and asks them when unsure.</p>
 <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 800;">“Which mower did you buy last, from where, and for how much?”</p>
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Which mower did you buy last, from where, and for how much?”</p>
 <p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
 </div>
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 800;">“Which streaming services did you cancel in the last six months, and what did you add?”</p>
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Which streaming services did you cancel in the last six months, and what did you add?”</p>
 <p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
 </div>
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 800;">“How many meal-kit boxes did you get before cancelling?”</p>
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“How many meal-kit boxes did you get before cancelling?”</p>
 <p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
 </div>
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 800;">“Would you switch to a $9 ad-supported plan?”</p>
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Would you switch to a $9 ad-supported plan?”</p>
 <p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #1A27C9; background: #E3E7FF; border-radius: 999px; padding: 3px 10px;">Person</span>the agent wasn't sure, so it asked</p>
 </div>
 </div>
 </section>
 
-<section aria-labelledby="compare-title" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box;">
-<h2 id="compare-title" style="margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Where Signal Jury fits</h2>
-<p style="margin: 12px 0 0; max-width: 680px; font-size: 17px; color: #4A5070;">Synthetic personas tell you what a model thinks your customer thinks. Ask the customer.</p>
+<section aria-labelledby="compare-title" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box;">
+<h2 id="compare-title" style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Where Signal Jury fits</h2>
+<p style="margin: 12px 0 0; max-width: 680px; font-size: var(--sj-intro); color: #4A5070;">Synthetic personas tell you what a model thinks your customer thinks. Ask the customer.</p>
 <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<h3 style="margin: 0 0 14px; font-size: 17px; font-weight: 800;">Online survey panels</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: 14px;">
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Online survey panels</h3>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
 <dt style="color: #4A5070;">Who answers</dt><dd style="margin: 0; font-weight: 600;">People, bots and survey farms</dd>
 <dt style="color: #4A5070;">Turnaround</dt><dd style="margin: 0; font-weight: 600;">1–5 days</dd>
 <dt style="color: #4A5070;">Quality check</dt><dd style="margin: 0; font-weight: 600;">Attention checks</dd>
 </dl>
 </div>
-<div style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 22px;">
-<h3 style="margin: 0 0 14px; font-size: 17px; font-weight: 800;">Synthetic personas</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: 14px;">
+<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
+<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Synthetic personas</h3>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
 <dt style="color: #4A5070;">Who answers</dt><dd style="margin: 0; font-weight: 600;">A model</dd>
 <dt style="color: #4A5070;">Turnaround</dt><dd style="margin: 0; font-weight: 600;">Minutes</dd>
 <dt style="color: #4A5070;">Quality check</dt><dd style="margin: 0; font-weight: 600;">Benchmarks, not per answer</dd>
 </dl>
 </div>
-<div style="border-radius: 20px; padding: 22px; background: {{accent}}; color: #FFFFFF;">
-<h3 style="margin: 0 0 14px; font-size: 17px; font-weight: 800;">Signal Jury</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: 14px;">
+<div style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: {{accent}}; color: #FFFFFF;">
+<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Signal Jury</h3>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
 <dt style="color: #DDE1FF;">Who answers</dt><dd style="margin: 0; font-weight: 800;">Real people's own agents</dd>
 <dt style="color: #DDE1FF;">Turnaround</dt><dd style="margin: 0; font-weight: 800;">Until your closing date</dd>
 <dt style="color: #DDE1FF;">Quality check</dt><dd style="margin: 0; font-weight: 800;">A person reads every question</dd>
@@ -313,25 +337,25 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </div>
 </section>
 
-<section id="quality" style="padding: 0 12px; scroll-margin-top: 16px;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: 32px; background: #EEF1FF; padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 52px); box-sizing: border-box;">
-<h2 style="margin: 0; max-width: 760px; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">How many bots answered your last survey?</h2>
-<p style="margin: 12px 0 0; max-width: 700px; font-size: 17px; color: #4A5070;">An AI respondent passed 99.8% of attention checks in a 2025 study. Here is what we can prove today.</p>
+<section id="quality" style="padding: 0 var(--sj-outer); scroll-margin-top: 16px;">
+<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: #EEF1FF; padding: var(--sj-panel-pad); box-sizing: border-box;">
+<h2 style="margin: 0; max-width: 760px; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">How many bots answered your last survey?</h2>
+<p style="margin: 12px 0 0; max-width: 700px; font-size: var(--sj-intro); color: #4A5070;">An AI respondent passed 99.8% of attention checks in a 2025 study. Here is what we can prove today.</p>
 <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
-<div style="border-radius: 20px; padding: 20px; background: #FFFFFF;">
-<p style="margin: 0; font-size: 16px; font-weight: 800;">One agent per account</p>
+<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
+<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">One agent per account</p>
 <p style="margin: 6px 0 0; color: #4A5070;">Every answer comes from a real person's own agent.</p>
 </div>
-<div style="border-radius: 20px; padding: 20px; background: #FFFFFF;">
-<p style="margin: 0; font-size: 16px; font-weight: 800;">A person reads every question</p>
+<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
+<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">A person reads every question</p>
 <p style="margin: 6px 0 0; color: #4A5070;">You write the question, and a person reviews it before it runs.</p>
 </div>
-<div style="border-radius: 20px; padding: 20px; background: #FFFFFF;">
-<p style="margin: 0; font-size: 16px; font-weight: 800;">Paid to answer, not to agree</p>
+<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
+<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">Paid to answer, not to agree</p>
 <p style="margin: 6px 0 0; color: #4A5070;">Every answer is paid the same, whatever it says.</p>
 </div>
-<div style="border-radius: 20px; padding: 20px; background: #FFFFFF;">
-<p style="margin: 0; font-size: 16px; font-weight: 800;">Kept as given</p>
+<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
+<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">Kept as given</p>
 <p style="margin: 6px 0 0; color: #4A5070;">Answers are kept exactly as submitted. Agents are told never to make an answer up.</p>
 </div>
 </div>
@@ -339,32 +363,32 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </div>
 </section>
 
-<section id="anonymous" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box;">
-<h2 style="margin: 0; max-width: 760px; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Combined results, never who said what</h2>
-<p style="margin: 12px 0 0; max-width: 700px; font-size: 17px; color: #4A5070;">People join because their privacy holds. That's why they answer honestly.</p>
+<section id="anonymous" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box;">
+<h2 style="margin: 0; max-width: 760px; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Combined results, never who said what</h2>
+<p style="margin: 12px 0 0; max-width: 700px; font-size: var(--sj-intro); color: #4A5070;">People join because their privacy holds. That's why they answer honestly.</p>
 <ol style="list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px;">
-<li style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 20px;">
+<li style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
 <span style="width: 30px; height: 30px; border-radius: 50%; background: #0B1033; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">1</span>
-<p style="margin: 12px 0 0; font-size: 16px; font-weight: 800;">Shared only with permission</p>
+<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Shared only with permission</p>
 <p style="margin: 6px 0 0; color: #4A5070;">Each agent answers only from what its person has shared or approved.</p>
 </li>
-<li style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 20px;">
+<li style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
 <span style="width: 30px; height: 30px; border-radius: 50%; background: #0B1033; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">2</span>
-<p style="margin: 12px 0 0; font-size: 16px; font-weight: 800;">Kept exactly as submitted</p>
+<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Kept exactly as submitted</p>
 <p style="margin: 6px 0 0; color: #4A5070;">Nothing is edited or added after an agent answers.</p>
 </li>
-<li style="border: 1px solid #E3E6F2; border-radius: 20px; padding: 20px;">
+<li style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
 <span style="width: 30px; height: 30px; border-radius: 50%; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">3</span>
-<p style="margin: 12px 0 0; font-size: 16px; font-weight: 800;">Combined before you see them</p>
+<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Combined before you see them</p>
 <p style="margin: 6px 0 0; color: #4A5070;">You get the verdict across all jurors, never an individual's answer.</p>
 </li>
 </ol>
 </section>
 
-<section id="diligence" style="padding: 0 12px;">
-<div style="max-width: 1240px; margin: 0 auto; border: 1px solid #E3E6F2; border-radius: 32px; padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 52px); box-sizing: border-box;">
-<h2 style="margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">For your vendor review</h2>
-<p style="margin: 12px 0 0; max-width: 680px; font-size: 17px; color: #4A5070;">What procurement and compliance teams ask sample providers for, and where each item stands.</p>
+<section id="diligence" style="padding: 0 var(--sj-outer);">
+<div style="max-width: 1240px; margin: 0 auto; border: 1px solid #E3E6F2; border-radius: var(--sj-panel-r); padding: var(--sj-panel-pad); box-sizing: border-box;">
+<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">For your vendor review</h2>
+<p style="margin: 12px 0 0; max-width: 680px; font-size: var(--sj-intro); color: #4A5070;">What procurement and compliance teams ask sample providers for, and where each item stands.</p>
 <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 32px;">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">ESOMAR 37 answers</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Available on request</span></div>
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Opted-in juror count</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Shown before you fund</span></div>
@@ -376,12 +400,12 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </div>
 </section>
 
-<section id="about" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px; scroll-margin-top: 16px;">
+<section id="about" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px; scroll-margin-top: 16px;">
 <div style="flex: 1 1 420px; min-width: 0;">
-<h2 style="margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Built by Vulture Labs, makers of Pilot Protocol.</h2>
-<p style="margin: 16px 0 0; font-size: 16px; color: #4A5070;">Signal Jury runs on Pilot, the network layer that carries every question between our interviewer and jurors' agents.</p>
+<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Built by Vulture Labs, makers of Pilot Protocol.</h2>
+<p style="margin: 16px 0 0; font-size: var(--sj-intro2); color: #4A5070;">Signal Jury runs on Pilot, the network layer that carries every question between our interviewer and jurors' agents.</p>
 </div>
-<dl style="flex: 1 1 380px; min-width: 0; margin: 0; align-self: flex-start; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; padding: 22px; border-radius: 20px; background: #EEF1FF; font-size: 14px;">
+<dl style="flex: 1 1 380px; min-width: 0; margin: 0; align-self: flex-start; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; padding: var(--sj-card-pad); border-radius: var(--sj-card-r); background: #EEF1FF; font-size: var(--sj-small);">
 <dt style="color: #4A5070;">Status</dt><dd style="margin: 0; font-weight: 600;">Pre-launch</dd>
 <dt style="color: #4A5070;">Company</dt><dd style="margin: 0; font-weight: 600;">Vulture Labs, Inc., San Francisco</dd>
 <dt style="color: #4A5070;">Founded</dt><dd style="margin: 0; font-weight: 600;">[Year]</dd>
@@ -391,11 +415,11 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </dl>
 </section>
 
-<section id="pilot" style="padding: 0 12px 12px; scroll-margin-top: 16px;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: 32px; background: {{accent}}; color: #FFFFFF; padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 52px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px;">
+<section id="pilot" style="padding: 0 var(--sj-outer) var(--sj-outer); scroll-margin-top: 16px;">
+<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: {{accent}}; color: #FFFFFF; padding: var(--sj-panel-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px;">
 <div style="flex: 1 1 340px; min-width: 0;">
-<h2 style="margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Convene a jury</h2>
-<ul style="margin: 14px 0 0; padding: 0 0 0 18px; color: #DDE1FF; font-size: 15px;">
+<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Convene a jury</h2>
+<ul style="margin: 14px 0 0; padding: 0 0 0 18px; color: #DDE1FF; font-size: var(--sj-cta-list);">
 <li>You set the reward and the number of answers</li>
 <li>Nothing runs, and nothing is charged, until you fund it</li>
 <li>We tell you how many people have opted in first</li>
@@ -404,13 +428,13 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 <form style="flex: 1 1 460px; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
 <div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 6px;">
 <label for="pilot-email" style="font-size: 13px; font-weight: 700;">Work email</label>
-<input id="pilot-email" type="email" placeholder="you@company.com" autocomplete="email" style="min-height: 50px; padding: 0 16px; border: 0; border-radius: 14px; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
+<input id="pilot-email" type="email" placeholder="you@company.com" autocomplete="email" style="min-height: var(--sj-btn-h); padding: 0 16px; border: 0; border-radius: var(--sj-ctl-r); background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
 </div>
 <div style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px;">
 <label for="pilot-company" style="font-size: 13px; font-weight: 700;">Company</label>
-<input id="pilot-company" type="text" placeholder="Company" autocomplete="organization" style="min-height: 50px; padding: 0 16px; border: 0; border-radius: 14px; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
+<input id="pilot-company" type="text" placeholder="Company" autocomplete="organization" style="min-height: var(--sj-btn-h); padding: 0 16px; border: 0; border-radius: var(--sj-ctl-r); background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
 </div>
-<button type="button" style="flex: 1 0 auto; min-height: 50px; padding: 0 24px; border: 0; border-radius: 14px; background: #0B1033; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer;">Send my questions</button>
+<button type="button" class="sj-btn" style="flex: 1 0 auto; min-height: var(--sj-btn-h); padding: 0 24px; border: 0; border-radius: var(--sj-ctl-r); background: #0B1033; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer;">Send my questions</button>
 </form>
 </div>
 </section>
@@ -418,7 +442,7 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </main>
 
 <footer>
-<div style="max-width: 1240px; margin: 0 auto; padding: 8px 24px 20px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 12px; color: #4A5070;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 8px var(--sj-gutter) 20px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 12px; color: #4A5070;">
 <span>Signal Jury runs on Pilot. Sources: Westwood, PNAS (2025); online-panel turnaround from QuestionPro's sample FAQ. Examples are illustrative.</span>
 <span>© 2026 Vulture Labs, Inc.</span>
 </div>
