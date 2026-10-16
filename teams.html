@@ -74,222 +74,316 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 #signup:focus-within{box-shadow:0 0 0 2px #2D3DF5}
 #pilot input:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
 </style>
+<style>
+.t-page{--accent:#2D3DF5;--navy:#0B1033;--ink:#0B1033;--muted:#4A5070;--line:#E3E6F2;--tint:#EEF1FF;--lav:#9DA6FF;--soft:#C9CCE6;--green:#087A50;--green-bg:#DDF5EA;background:#FFFFFF;color:var(--ink);font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55}
+.t-page *{box-sizing:border-box}
+.t-page :where(h1,h2,h3,p,ul,ol,dl,dd,figure){margin:0}
+.t-page :where(ul,ol){padding:0;list-style:none}
+.t-page svg{display:block}
+.t-ic{width:22px;height:22px}
+/* nav */
+.t-nav{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 20px}
+.t-brand{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none}
+.t-logo{width:146px;height:26px;overflow:visible}
+.t-brand-sub{margin-top:6px;font-size:13px;font-weight:600;color:var(--muted)}
+.t-links{display:flex;flex-wrap:wrap;align-items:center;gap:0 24px}
+.t-page a.t-link{display:flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .15s ease}
+.t-page a.t-link:hover{color:var(--accent)}
+/* buttons */
+.t-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border:0;border-radius:999px;font:inherit;font-size:16px;font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer}
+.t-btn-sm{min-height:42px;padding:0 18px;font-size:14px}
+.t-btn-block{width:100%}
+.t-page .t-btn-accent,.t-page .t-btn-accent:hover{background:var(--accent);color:#FFFFFF}
+.t-page .t-btn-dark,.t-page .t-btn-dark:hover{background:var(--navy);color:#FFFFFF}
+.t-page .t-btn-ghost,.t-page .t-btn-ghost:hover{background:rgba(255,255,255,.04);color:#FFFFFF;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.t-page .t-btn-ghost:hover{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75)}
+.t-btn-ic{width:18px;height:18px}
+/* layout */
+.t-band{padding:16px 12px 0}
+.t-band-first{padding-top:4px}
+.t-band-last{padding-bottom:12px}
+.t-panel{position:relative;overflow:hidden;max-width:1240px;margin:0 auto;border-radius:32px;padding:clamp(48px,6vw,84px) clamp(20px,5vw,64px)}
+.t-panel-tint{background:var(--tint)}
+.t-panel-dark{background:var(--navy);color:#FFFFFF}
+.t-panel-accent{background:var(--accent);color:#FFFFFF}
+.t-section{max-width:1240px;margin:0 auto;padding:96px 24px}
+.t-section + .t-section{padding-top:0}
+.t-head{position:relative;z-index:1;max-width:720px}
+.t-head-center{margin:0 auto;text-align:center}
+.t-h2{font-size:clamp(32px,3.7vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.032em}
+.t-intro{margin-top:16px;font-size:18.5px;line-height:1.55;color:var(--muted)}
+.t-head-center .t-intro{margin-left:auto;margin-right:auto;max-width:34em}
+.t-panel-dark .t-intro{color:var(--soft)}
+/* decorative signal-dot texture, echoing the logo mark */
+.t-dots{position:absolute;right:-60px;bottom:-60px;width:520px;height:440px;pointer-events:none;background-image:radial-gradient(circle,rgba(157,166,255,.30) 1.7px,transparent 2px);background-size:18px 18px;-webkit-mask-image:radial-gradient(closest-side,#000,transparent);mask-image:radial-gradient(closest-side,#000,transparent)}
+.t-dots-panel{right:-80px;top:-80px;bottom:auto;width:460px;height:380px}
+.t-dots-light{background-image:radial-gradient(circle,rgba(255,255,255,.28) 1.7px,transparent 2px)}
+/* hero */
+.t-hero{position:relative;overflow:hidden;max-width:1240px;margin:0 auto;border-radius:32px;background:var(--navy);color:#FFFFFF;padding:clamp(40px,5.5vw,80px) clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center;gap:56px}
+.t-hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 420px at 88% 8%,rgba(45,61,245,.55),transparent 70%),radial-gradient(520px 380px at -5% 105%,rgba(157,166,255,.20),transparent 70%)}
+.t-hero-copy,.t-hero-visual{position:relative;z-index:1;min-width:0}
+.t-kicker{display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-size:13.5px;font-weight:700;color:var(--soft)}
+.t-kicker-mark{width:26px;height:26px;border-radius:50%;background:rgba(45,61,245,.55);display:grid;place-items:center}
+.t-kicker-svg{width:13px;height:13px}
+.t-h1{margin-top:22px;font-size:clamp(40px,4.6vw,64px);line-height:1;font-weight:800;letter-spacing:-.038em}
+.t-h1 span{display:block;color:var(--lav)}
+.t-lede{margin-top:22px;max-width:31em;font-size:19px;line-height:1.55;color:var(--soft)}
+.t-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.t-hero-visual{display:flex;flex-direction:column;align-items:center;padding-top:20px}
+.t-float{position:relative;z-index:2;align-self:flex-start;margin:0 0 -18px 8%;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 10px;border-radius:999px;background:#FFFFFF;color:var(--ink);font-size:13.5px;font-weight:700;box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
+.t-float-ic{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--green);color:#FFFFFF;stroke-width:3}
+.t-verdict{width:100%;max-width:470px;border-radius:24px;background:#FFFFFF;color:var(--ink);padding:30px 26px 22px;box-shadow:0 44px 90px -34px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
+.t-verdict-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.t-verdict-title{font-size:17px;font-weight:800}
+.t-verdict-n{margin-top:2px;font-size:13px;color:var(--muted)}
+.t-tag{flex:0 0 auto;font-size:11px;font-weight:700;color:var(--muted);border:1px solid #D5D9EA;border-radius:6px;padding:1px 7px}
+.t-verdict-q{margin-top:16px;font-size:15.5px;font-weight:700;line-height:1.4}
+.t-bars{margin-top:16px;display:grid;gap:14px;font-variant-numeric:tabular-nums}
+.t-bars-head,.t-bar-row{display:grid;grid-template-columns:minmax(0,1fr) 56px 88px;align-items:baseline}
+.t-bars-head{font-size:12px;font-weight:600;color:var(--muted)}
+.t-bars-head span+span,.t-num{text-align:right}
+.t-bar-row{row-gap:7px;font-size:14.5px}
+.t-num{font-weight:700}
+.t-bar{grid-column:1 / -1;height:8px;border-radius:999px;background:#EEF0F6;overflow:hidden}
+.t-bar>span{display:block;height:100%;border-radius:999px;background:#9DA6FF}
+.t-bar-top .t-bar>span{background:var(--accent)}
+.t-verdict-foot{margin-top:18px;padding-top:14px;border-top:1px solid #EEF0F6;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.t-foot-ic{width:15px;height:15px}
+/* problem + proof */
+.t-quality-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center;gap:32px 56px}
+.t-quality-top .t-h2{max-width:13em}
+.t-stat{border-radius:24px;background:var(--navy);color:#FFFFFF;padding:28px 28px 24px;box-shadow:0 24px 48px -28px rgba(11,16,51,.6)}
+.t-stat-num{font-family:'Schibsted Grotesk','Figtree',sans-serif;font-size:clamp(64px,7vw,92px);line-height:.95;font-weight:800;letter-spacing:-.04em}
+.t-stat-num span{color:var(--lav)}
+.t-stat-cap{margin-top:12px;font-size:16px;line-height:1.45;color:var(--soft)}
+.t-stat-src{margin-top:12px;font-size:12.5px;font-weight:600;color:#8F97C9}
+.t-proofs{margin-top:48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.t-proof{border-radius:22px;background:#FFFFFF;padding:24px;box-shadow:0 1px 2px rgba(11,16,51,.04),0 10px 24px -16px rgba(11,16,51,.22)}
+.t-tile{width:46px;height:46px;border-radius:14px;background:var(--tint);color:var(--accent);display:grid;place-items:center}
+.t-proof h3{margin-top:18px;font-size:17px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+.t-proof p{margin-top:8px;font-size:15px;color:var(--muted)}
+/* comparison */
+.t-compare{margin-top:52px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:center}
+.t-col{border:1px solid var(--line);border-radius:24px;background:#FFFFFF;padding:28px 26px}
+.t-col-head{display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px solid #EEF0F6}
+.t-col-icon{width:42px;height:42px;border-radius:12px;background:#F1F2F7;color:var(--muted);display:grid;place-items:center;flex:0 0 auto}
+.t-col h3{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.t-col dl>div{padding:16px 0;border-bottom:1px solid #EEF0F6}
+.t-col dl>div:last-child{border-bottom:0;padding-bottom:0}
+.t-col dt{font-size:13px;font-weight:600;color:var(--muted)}
+.t-col dd{margin-top:4px;font-size:16px;font-weight:700;display:flex;align-items:flex-start;gap:8px}
+.t-col-us{position:relative;border:0;background:var(--accent);color:#FFFFFF;padding:36px 28px;box-shadow:0 34px 60px -30px rgba(45,61,245,.75);transform:translateY(-6px)}
+.t-col-us .t-col-head,.t-col-us dl>div{border-color:rgba(255,255,255,.18)}
+.t-col-us .t-col-icon{background:rgba(255,255,255,.16)}
+.t-col-mark{width:20px;height:20px}
+.t-col-us dt{color:#DDE1FF}
+.t-ok{width:20px;height:20px;flex:0 0 auto;margin-top:1px;padding:3px;border-radius:50%;background:rgba(255,255,255,.2);stroke-width:3}
+/* how it works */
+.t-steps{position:relative;margin-top:52px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.t-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:30px 22px 28px;border-radius:24px;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,16,51,.04),0 10px 24px -16px rgba(11,16,51,.22)}
+.t-step-art{position:relative;width:72px;height:72px;flex:0 0 auto}
+.t-step-art svg{width:100%;height:100%}
+.t-step-n{position:absolute;top:-11px;left:-11px;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#FFFFFF;font-size:15px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF}
+.t-step h3{font-size:17.5px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+.t-step p{margin-top:8px;font-size:15px;color:var(--muted)}
+/* example questions */
+.t-qs{margin-top:44px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.t-q{display:flex;flex-direction:column;justify-content:space-between;gap:22px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#FFFFFF;transition:box-shadow .2s ease,transform .2s ease}
+.t-q:hover{box-shadow:0 18px 40px -28px rgba(11,16,51,.45);transform:translateY(-2px)}
+.t-q-text{font-family:'Schibsted Grotesk','Figtree',sans-serif;font-size:22px;line-height:1.28;font-weight:700;letter-spacing:-.015em}
+.t-q-by{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid #EEF0F6}
+.t-avatar{width:34px;height:34px;flex:0 0 auto;display:grid;place-items:center}
+.t-avatar-agent{border-radius:10px;background:#0d1117}
+.t-avatar-mark{width:16px;height:16px}
+.t-avatar-person{border-radius:50%;background:linear-gradient(135deg,#FFD6A5,#F49DB4);color:#5A2340}
+.t-avatar-ic{width:18px;height:18px}
+.t-q-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:14px;color:var(--muted)}
+.t-pill{font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px}
+.t-pill-agent{color:#065F3E;background:var(--green-bg)}
+.t-pill-person{color:#1A27C9;background:#E3E7FF}
+/* privacy flow */
+.t-flow{position:relative;z-index:1;margin-top:52px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.t-flow-step{position:relative;border-radius:24px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);padding:30px 26px}
+.t-flow-icon{width:52px;height:52px;border-radius:16px;background:rgba(157,166,255,.16);color:var(--lav);display:grid;place-items:center}
+.t-flow-n{display:block;margin-top:20px;font-size:13px;font-weight:700;color:var(--lav)}
+.t-flow-step h3{margin-top:4px;font-size:19px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+.t-flow-step p{margin-top:8px;font-size:15.5px;color:var(--soft)}
+.t-flow-arrow{position:absolute;top:50%;right:-34px;width:28px;height:28px;margin-top:-14px;color:var(--lav)}
+/* vendor review */
+.t-vendor{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px 64px;align-items:start}
+.t-checklist{border:1px solid var(--line);border-radius:24px;padding:6px 24px}
+.t-checklist li{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #EEF0F6}
+.t-checklist li:last-child{border-bottom:0}
+.t-ci{width:38px;height:38px;flex:0 0 auto;border-radius:11px;background:var(--tint);color:var(--accent);display:grid;place-items:center}
+.t-ci .t-ic{width:19px;height:19px}
+.t-cl{flex:1 1 auto;min-width:0;font-weight:700}
+.t-st{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--muted);background:#F1F2F7;border-radius:999px;padding:4px 11px;white-space:nowrap}
+.t-st-ok{color:#065F3E;background:var(--green-bg)}
+.t-st-soon{color:#8A5A00;background:#FFF1C7}
+/* about */
+.t-about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:40px 64px;align-items:center}
+.t-about-mark{width:56px;height:56px;border-radius:16px;background:#0d1117;display:grid;place-items:center;margin-bottom:22px}
+.t-about-svg{width:26px;height:26px}
+.t-facts{border-radius:24px;background:var(--tint);padding:8px 26px}
+.t-facts>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #DCE0F5}
+.t-facts>div:last-child{border-bottom:0}
+.t-facts dt{color:var(--muted);font-size:15px}
+.t-facts dd{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.t-live{width:8px;height:8px;border-radius:50%;background:#F5A524;box-shadow:0 0 0 4px rgba(245,165,36,.18)}
+/* call to action */
+.t-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center;gap:40px 64px}
+.t-cta-copy{position:relative;z-index:1}
+.t-cta .t-h2{font-size:clamp(36px,4.4vw,56px)}
+.t-ticks{margin-top:24px;display:grid;gap:12px}
+.t-ticks li{display:flex;align-items:flex-start;gap:12px;font-size:17px;line-height:1.45;color:#E6E9FF}
+.t-tick{width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.t-tick .t-ic{width:15px;height:15px;stroke-width:3}
+.t-form{position:relative;z-index:1;display:grid;gap:14px;border-radius:24px;background:#FFFFFF;color:var(--ink);padding:28px;box-shadow:0 40px 80px -40px rgba(11,16,51,.8)}
+.t-field{display:grid;gap:7px}
+.t-field label{font-size:13.5px;font-weight:700}
+.t-field input{width:100%;min-height:52px;padding:0 16px;border:1px solid #D5D9EA;border-radius:14px;background:#FFFFFF;font:inherit;font-size:16px;color:var(--ink)}
+.t-field input::placeholder{color:#8A8FA8}
+.t-field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,61,245,.18)}
+.t-form .t-btn{margin-top:6px;border-radius:14px}
+/* footer */
+.t-foot{max-width:1240px;margin:0 auto;padding:22px 24px 30px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;font-size:12.5px;color:var(--muted)}
+
+@media (max-width:1024px){
+.t-hero{grid-template-columns:minmax(0,1fr);gap:40px}
+.t-hero-visual{align-items:stretch}
+.t-verdict{max-width:none}
+.t-quality-top{grid-template-columns:minmax(0,1fr);gap:28px}
+.t-proofs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.t-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.t-vendor,.t-about,.t-cta{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:860px){
+.t-compare{grid-template-columns:minmax(0,1fr);gap:12px}
+.t-col-us{transform:none}
+.t-flow{grid-template-columns:minmax(0,1fr);gap:36px}
+.t-flow-arrow{top:auto;right:auto;bottom:-33px;left:50%;margin:0 0 0 -14px;transform:rotate(90deg)}
+}
+@media (max-width:560px){
+.t-nav{padding:6px 20px;gap:4px 12px}
+.t-logo{width:124px;height:22px}
+.t-links{gap:0 14px}
+.t-page a.t-link{font-size:14px}
+.t-btn{min-height:48px;font-size:15.5px}
+.t-btn-sm{min-height:40px;padding:0 15px;font-size:13.5px}
+.t-band{padding:0}
+.t-band-first{padding-top:0}
+.t-band-last{padding-bottom:0}
+.t-hero,.t-panel{border-radius:0}
+.t-hero{padding:32px 20px 40px;gap:36px}
+.t-panel{padding:48px 20px}
+.t-section{padding:56px 20px}
+.t-h1{margin-top:18px;font-size:34px;line-height:1.02}
+.t-lede{margin-top:16px;font-size:16px}
+.t-actions{margin-top:26px}
+.t-kicker{font-size:12.5px}
+.t-float{margin:0 0 -16px 14px;font-size:12.5px}
+.t-verdict{padding:26px 18px 18px}
+.t-bars-head,.t-bar-row{grid-template-columns:minmax(0,1fr) 46px 74px}
+.t-bar-row{font-size:14px}
+.t-h2{font-size:28px}
+.t-intro{margin-top:12px;font-size:16px}
+.t-stat{padding:24px 22px 20px}
+.t-stat-num{font-size:68px}
+.t-stat-cap{font-size:15px}
+.t-proofs{margin-top:28px;grid-template-columns:minmax(0,1fr);gap:0;border-radius:20px;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,16,51,.04),0 10px 24px -16px rgba(11,16,51,.22)}
+.t-proof{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;border-radius:0;background:transparent;box-shadow:none;padding:16px}
+.t-proof+.t-proof{border-top:1px solid #EEF0F6}
+.t-proof .t-tile{grid-row:1 / span 2;width:40px;height:40px;border-radius:12px}
+.t-proof h3{margin-top:0;font-size:16px}
+.t-proof p{margin-top:3px;font-size:14.5px}
+.t-compare{margin-top:32px}
+.t-col,.t-col-us{padding:18px 18px 8px}
+.t-col-head{padding-bottom:12px}
+.t-col-icon{width:36px;height:36px;border-radius:10px}
+.t-col h3{font-size:16.5px}
+.t-col dl>div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px;align-items:baseline;padding:10px 0}
+.t-col dt{font-size:13px}
+.t-col dd{margin-top:0;font-size:14.5px}
+.t-col-us dl>div:last-child{padding-bottom:10px}
+.t-steps{margin-top:32px;grid-template-columns:minmax(0,1fr);gap:12px}
+.t-step{flex-direction:row;align-items:flex-start;text-align:left;gap:16px;padding:20px 18px}
+.t-step-art{width:52px;height:52px}
+.t-step-n{width:26px;height:26px;font-size:13px;top:-9px;left:-9px}
+.t-step h3{font-size:16px}
+.t-step p{margin-top:4px;font-size:14.5px}
+.t-qs{margin-top:28px}
+.t-q{padding:22px}
+.t-q-text{font-size:18.5px}
+.t-flow{margin-top:32px;gap:30px}
+.t-flow-step{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:14px;padding:18px}
+.t-flow-icon{grid-row:1 / span 3;width:44px;height:44px;border-radius:13px}
+.t-flow-n{margin-top:0}
+.t-flow-step h3{margin-top:2px;font-size:16.5px}
+.t-flow-step p{margin-top:4px;font-size:14.5px}
+.t-flow-arrow{bottom:-29px}
+.t-checklist{padding:2px 16px;border-radius:20px}
+.t-checklist li{gap:12px;padding:13px 0}
+.t-ci{display:none}
+.t-cl{font-size:14.5px;line-height:1.35}
+.t-st{font-size:12px;padding:3px 9px}
+.t-about-mark{width:44px;height:44px;border-radius:13px;margin-bottom:16px}
+.t-about-svg{width:20px;height:20px}
+.t-facts{padding:4px 18px}
+.t-facts>div{grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0}
+.t-facts dt,.t-facts dd{font-size:14.5px}
+.t-cta .t-h2{font-size:32px}
+.t-ticks li{font-size:15.5px}
+.t-form{padding:20px}
+.t-foot{padding:20px 20px 28px}
+}
+</style>
 </helmet>
-<div style="background: #FFFFFF; color: #0B1033; font-family: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: var(--sj-body); line-height: 1.55;">
-
-<header>
-<nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-nav-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px;">
-<a href="#top" style="display: flex; align-items: center; gap: 10px; min-height: 44px; color: #0B1033; text-decoration: none; font-weight: 800; font-size: 20px; letter-spacing: -0.02em;">
-<svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" style="flex: 0 0 auto; overflow: visible; width: var(--sj-logo-w); height: var(--sj-logo-h);"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg>
-<span class="sj-hide-sm" style="margin-top: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #4A5070;">for research teams</span>
-</a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sj-navlinks-gap);">
-<a class="sj-hide-sm sj-navlink" href="#quality" sc-camel-on-click="{{ toQuality }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">Data quality</a>
-<a class="sj-hide-sm sj-navlink" href="#about" sc-camel-on-click="{{ toAbout }}" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: 14px; font-weight: 600;">About us</a>
-<a class="sj-navlink" href="./" style="display: flex; align-items: center; min-height: 44px; color: #0B1033; text-decoration: none; font-size: var(--sj-navlink-fs); font-weight: 600;">For jurors</a>
-<a class="sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: var(--sj-navbtn-h); padding: 0 var(--sj-navbtn-px); border-radius: 999px; background: #0B1033; color: #FFFFFF; text-decoration: none; font-size: var(--sj-navbtn-fs); font-weight: 700;">Convene a jury</a>
-</div>
-</nav>
-</header>
-
+<div class="t-page" style="--accent: {{accent}};">
+<header class="t-header"><nav class="t-nav" aria-label="Main">
+<a class="t-brand" href="#top"><svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" class="t-logo"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg><span class="t-brand-sub sj-hide-sm">for research teams</span></a>
+<div class="t-links"><a class="t-link sj-hide-sm" href="#how" sc-camel-on-click="{{ toHow }}">How it works</a><a class="t-link sj-hide-sm" href="#quality" sc-camel-on-click="{{ toQuality }}">Data quality</a><a class="t-link sj-hide-sm" href="#about" sc-camel-on-click="{{ toAbout }}">About us</a><a class="t-link" href="./">For jurors</a><a class="t-btn t-btn-dark t-btn-sm sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a></div></nav></header>
 <main id="top">
-
-<section style="padding: 4px var(--sj-outer) 0;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: #0B1033; color: #FFFFFF; padding: var(--sj-darkhero-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sj-row-gap) 48px;">
-<div style="flex: 999 1 460px; min-width: 0;">
-<p style="margin: 0; display: inline-block; padding: var(--sj-pill-pad); border-radius: 999px; background: rgba(255, 255, 255, 0.1); font-size: var(--sj-pill-fs); font-weight: 700; color: #C9CCE6;">Real people's own agents, not AI personas</p>
-<h1 style="margin: var(--sj-h1-mt) 0 0; max-width: 640px; font-size: var(--sj-h1-teams); line-height: 1.04; font-weight: 800; letter-spacing: -0.035em;">Bots don't buy your product. <span style="color: #9DA6FF;">Stop asking them.</span></h1>
-<p style="margin: var(--sj-lede-mt) 0 0; max-width: 540px; font-size: var(--sj-lede); line-height: 1.5; color: #C9CCE6;">Signal Jury puts your question to people who opted in, through the AI agents that already know them. Every answer is paid, and kept exactly as given.</p>
-<div class="sj-actions" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--sj-actions-mt);">
-<a class="sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}" style="display: inline-flex; align-items: center; min-height: var(--sj-btn-h); padding: 0 var(--sj-btn-px); border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700;">Convene a jury</a>
-<a class="sj-btn" href="#questions" sc-camel-on-click="{{ toQuestions }}" style="display: inline-flex; align-items: center; gap: 6px; min-height: var(--sj-btn-h); padding: 0 var(--sj-btn-px); border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.4); color: #FFFFFF; text-decoration: none; font-weight: 700;">See example questions <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
-</div>
-</div>
-
-<figure class="sj-verdict" style="flex: 1 1 340px; max-width: 450px; min-width: 0; margin: 0; border-radius: var(--sj-verdict-r); padding: var(--sj-verdict-pad); background: #FFFFFF; color: #0B1033; box-sizing: border-box; font-size: var(--sj-verdict-fs); box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5);">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
-<span style="font-weight: 800; font-size: 16px;">The verdict</span>
-<span style="font-size: 11px; font-weight: 600; color: #4A5070; border: 1px solid #D5D9EA; border-radius: 6px; padding: 0 6px; white-space: nowrap;">Example</span>
-</div>
-<p style="margin: 6px 0 0; font-size: 13px; color: #4A5070;">Every opted-in juror · n = [N]</p>
-<p style="margin: 16px 0 8px; font-weight: 700;">Which lawn mower did you buy last, and what did you pay?</p>
-<div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0 16px; font-size: 13px; font-variant-numeric: tabular-nums;">
-<span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600;">Type</span><span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600; text-align: right;">Share</span><span style="padding: 6px 0; color: #4A5070; font-size: 12px; font-weight: 600; text-align: right;">Median paid</span>
-<span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Battery push</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">46%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$399</span>
-<span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Gas push</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">27%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$329</span>
-<span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Robotic</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">15%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$1,099</span>
-<span style="padding: 8px 0; border-top: 1px solid #EEF0F6;">Riding</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">12%</span><span style="padding: 8px 0; border-top: 1px solid #EEF0F6; text-align: right; font-weight: 700;">$1,899</span>
-</div>
-<p style="margin: 14px 0 0; font-size: 12px; font-weight: 600; color: #4A5070;">Combined results only. Never who said what.</p>
-</figure>
-</div>
+<section class="t-band t-band-first"><div class="t-hero">
+<div class="t-hero-glow" aria-hidden="true"></div><div class="t-dots" aria-hidden="true"></div>
+<div class="t-hero-copy"><p class="t-kicker"><span class="t-kicker-mark"><svg class="t-kicker-svg" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#9DA6FF"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span>Real people's own agents, not AI personas</p><h1 class="t-h1">Bots don't buy your product. <span>Stop asking them.</span></h1><p class="t-lede">Signal Jury puts your question to people who opted in, through the AI agents that already know them. Every answer is paid, and kept exactly as given.</p><div class="t-actions sj-actions"><a class="t-btn t-btn-accent sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a><a class="t-btn t-btn-ghost sj-btn" href="#questions" sc-camel-on-click="{{ toQuestions }}">See example questions <svg class="t-btn-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a></div></div>
+<div class="t-hero-visual"><p class="t-float"><svg class="t-float-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>A person reads every question</p><figure class="t-verdict" aria-label="Example verdict"><div class="t-verdict-head"><div><p class="t-verdict-title">The verdict</p><p class="t-verdict-n">Every opted-in juror · n = [N]</p></div><span class="t-tag">Example</span></div><p class="t-verdict-q">Which lawn mower did you buy last, and what did you pay?</p><div class="t-bars"><div class="t-bars-head"><span>Type</span><span>Share</span><span>Median paid</span></div><div class="t-bar-row t-bar-top"><span>Battery push</span><span class="t-num">46%</span><span class="t-num">$399</span><span class="t-bar"><span style="width: 46%;"></span></span></div><div class="t-bar-row"><span>Gas push</span><span class="t-num">27%</span><span class="t-num">$329</span><span class="t-bar"><span style="width: 27%;"></span></span></div><div class="t-bar-row"><span>Robotic</span><span class="t-num">15%</span><span class="t-num">$1,099</span><span class="t-bar"><span style="width: 15%;"></span></span></div><div class="t-bar-row"><span>Riding</span><span class="t-num">12%</span><span class="t-num">$1,899</span><span class="t-bar"><span style="width: 12%;"></span></span></div></div><p class="t-verdict-foot"><svg class="t-foot-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Combined results only. Never who said what.</p></figure></div>
+</div></section>
+<section id="quality" class="t-band"><div class="t-panel t-panel-tint">
+<div class="t-quality-top"><div class="t-head"><h2 class="t-h2">How many bots answered your last survey?</h2><p class="t-intro">Here is what we can prove today.</p></div><figure class="t-stat"><p class="t-stat-num">99.8<span>%</span></p><p class="t-stat-cap">of attention checks were passed by an AI respondent in a 2025 study.</p><p class="t-stat-src">Westwood, PNAS (2025)</p></figure></div>
+<ul class="t-proofs"><li class="t-proof"><span class="t-tile"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"></circle><path d="M2.5 20.5a6.5 6.5 0 0 1 13 0"></path><path d="M16 11.5l2 2 4-4"></path></svg></span><h3>One agent per account</h3><p>Every answer comes from a real person's own agent.</p></li><li class="t-proof"><span class="t-tile"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 14.5l2 2 4-4"></path></svg></span><h3>A person reads every question</h3><p>You write the question, and a person reviews it before it runs.</p></li><li class="t-proof"><span class="t-tile"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 20h8M5 7h14"></path><path d="M5 7l-2.5 6a2.5 2.5 0 0 0 5 0z"></path><path d="M19 7l-2.5 6a2.5 2.5 0 0 0 5 0z"></path></svg></span><h3>Paid to answer, not to agree</h3><p>Every answer is paid the same, whatever it says.</p></li><li class="t-proof"><span class="t-tile"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"></path><path d="M10 13h4"></path></svg></span><h3>Kept as given</h3><p>Answers are kept exactly as submitted. Agents are told never to make an answer up.</p></li></ul>
+</div></section>
+<section class="t-section" aria-labelledby="compare-title">
+<div class="t-head t-head-center"><h2 id="compare-title" class="t-h2">Where Signal Jury fits</h2><p class="t-intro">Synthetic personas tell you what a model thinks your customer thinks. Ask the customer.</p></div>
+<div class="t-compare"><div class="t-col"><div class="t-col-head"><span class="t-col-icon"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4.5V3h6v1.5"></path><path d="M9 10h6M9 14h6M9 18h3"></path></svg></span><h3>Online survey panels</h3></div><dl><div><dt>Who answers</dt><dd>People, bots and survey farms</dd></div><div><dt>Turnaround</dt><dd>1–5 days</dd></div><div><dt>Quality check</dt><dd>Attention checks</dd></div></dl></div><div class="t-col"><div class="t-col-head"><span class="t-col-icon"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"></rect><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"></path></svg></span><h3>Synthetic personas</h3></div><dl><div><dt>Who answers</dt><dd>A model</dd></div><div><dt>Turnaround</dt><dd>Minutes</dd></div><div><dt>Quality check</dt><dd>Benchmarks, not per answer</dd></div></dl></div><div class="t-col t-col-us"><div class="t-col-head"><span class="t-col-icon"><svg class="t-col-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#FFFFFF"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><h3>Signal Jury</h3></div><dl><div><dt>Who answers</dt><dd><svg class="t-ok" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Real people's own agents</dd></div><div><dt>Turnaround</dt><dd><svg class="t-ok" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Until your closing date</dd></div><div><dt>Quality check</dt><dd><svg class="t-ok" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>A person reads every question</dd></div></dl></div></div>
 </section>
-
-<section id="questions" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter) 0; box-sizing: border-box; scroll-margin-top: 16px;">
-<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Your customers' own words, without recruiting a panel</h2>
-<p style="margin: 12px 0 0; max-width: 640px; font-size: var(--sj-intro); color: #4A5070;">Each agent answers from what its person has shared or approved, and asks them when unsure.</p>
-<div class="sj-carousel" style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Which mower did you buy last, from where, and for how much?”</p>
-<p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
-</div>
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Which streaming services did you cancel in the last six months, and what did you add?”</p>
-<p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
-</div>
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“How many meal-kit boxes did you get before cancelling?”</p>
-<p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Agent</span>from what its person shared</p>
-</div>
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<p style="margin: 0; font-size: var(--sj-quote); line-height: 1.35; font-weight: 800;">“Would you switch to a $9 ad-supported plan?”</p>
-<p style="margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #4A5070;"><span style="font-size: 12px; font-weight: 700; color: #1A27C9; background: #E3E7FF; border-radius: 999px; padding: 3px 10px;">Person</span>the agent wasn't sure, so it asked</p>
-</div>
-</div>
+<section id="how" class="t-band"><div class="t-panel t-panel-tint">
+<div class="t-head t-head-center"><h2 class="t-h2">How a jury works</h2></div>
+<ol class="t-steps"><li class="t-step"><span class="t-step-art"><svg sc-camel-view-box="0 0 64 64" role="img" aria-label="A question being written and approved"><rect width="64" height="64" rx="16" fill="#EEF1FF"></rect><rect x="14" y="9" width="32" height="42" rx="6" fill="#FFFFFF" stroke="#D5D9EA" stroke-width="1"></rect><rect x="20" y="17" width="20" height="3.5" rx="1.75" fill="#0B1033"></rect><rect x="20" y="24" width="16" height="3" rx="1.5" fill="#C9CCDA"></rect><rect x="20" y="30" width="18" height="3" rx="1.5" fill="#C9CCDA"></rect><rect x="20" y="36" width="11" height="3" rx="1.5" fill="#C9CCDA"></rect><circle cx="45" cy="46" r="9" fill="#087A50" stroke="#FFFFFF" stroke-width="2.5"></circle><path d="M41 46l2.8 2.8 5.2-5.4" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="t-step-n">1</span></span><div class="t-step-text"><h3>You write the question</h3><p>A person reviews every question before it runs.</p></div></li><li class="t-step"><span class="t-step-art"><svg sc-camel-view-box="0 0 64 64" role="img" aria-label="Setting a reward and number of answers"><rect width="64" height="64" rx="16" fill="#EEF1FF"></rect><rect x="8" y="13" width="48" height="38" rx="9" fill="#FFFFFF" stroke="#D5D9EA" stroke-width="1"></rect><circle cx="19" cy="25" r="6.5" fill="#2775CA"></circle><text x="19" y="28.4" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" font-weight="800" fill="#FFFFFF">$</text><rect x="29" y="21.5" width="20" height="3.5" rx="1.75" fill="#0B1033"></rect><rect x="29" y="27" width="13" height="3" rx="1.5" fill="#C9CCDA"></rect><rect x="14" y="39" width="36" height="4" rx="2" fill="#E3E6F2"></rect><rect x="14" y="39" width="23" height="4" rx="2" fill="#2D3DF5"></rect><circle cx="37" cy="41" r="4.6" fill="#FFFFFF" stroke="#2D3DF5" stroke-width="2"></circle></svg><span class="t-step-n">2</span></span><div class="t-step-text"><h3>You set the reward and the number of answers</h3><p>We tell you how many people have opted in first. Nothing is charged until you fund it.</p></div></li><li class="t-step"><span class="t-step-art"><svg sc-camel-view-box="0 0 64 64" role="img" aria-label="Several jurors' agents answering"><rect width="64" height="64" rx="16" fill="#EEF1FF"></rect><rect x="14" y="8" width="36" height="16" rx="8" fill="#FFFFFF" stroke="#D5D9EA" stroke-width="1"></rect><circle cx="25" cy="16" r="2" fill="#2D3DF5"></circle><circle cx="32" cy="16" r="2" fill="#2D3DF5" opacity="0.6"></circle><circle cx="39" cy="16" r="2" fill="#2D3DF5" opacity="0.3"></circle><rect x="7" y="33" width="15" height="15" rx="4.5" fill="#0d1117"></rect><g fill="#2e5bff" transform="translate(10 36) scale(0.3)"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><rect x="24.5" y="33" width="15" height="15" rx="4.5" fill="#0d1117"></rect><g fill="#2e5bff" transform="translate(27.5 36) scale(0.3)"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><rect x="42" y="33" width="15" height="15" rx="4.5" fill="#0d1117"></rect><g fill="#2e5bff" transform="translate(45 36) scale(0.3)"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg><span class="t-step-n">3</span></span><div class="t-step-text"><h3>Jurors' agents answer</h3><p>Only from what their people have shared or approved. Every answer is paid.</p></div></li><li class="t-step"><span class="t-step-art"><svg sc-camel-view-box="0 0 64 64" role="img" aria-label="A combined result chart"><rect width="64" height="64" rx="16" fill="#EEF1FF"></rect><rect x="9" y="11" width="46" height="42" rx="9" fill="#FFFFFF" stroke="#D5D9EA" stroke-width="1"></rect><rect x="16" y="20" width="28" height="5.5" rx="2.75" fill="#2D3DF5"></rect><rect x="16" y="29.5" width="18" height="5.5" rx="2.75" fill="#9DA6FF"></rect><rect x="16" y="39" width="10" height="5.5" rx="2.75" fill="#C9CCDA"></rect></svg><span class="t-step-n" style="background: {{accent}};">4</span></span><div class="t-step-text"><h3>You get the verdict</h3><p>Combined results only. Never who said what.</p></div></li></ol>
+</div></section>
+<section id="questions" class="t-section">
+<div class="t-head"><h2 class="t-h2">Your customers' own words, without recruiting a panel</h2><p class="t-intro">Each agent answers from what its person has shared or approved, and asks them when unsure.</p></div>
+<ul class="t-qs sj-carousel"><li class="t-q"><p class="t-q-text">“Which mower did you buy last, from where, and for how much?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Which streaming services did you cancel in the last six months, and what did you add?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“How many meal-kit boxes did you get before cancelling?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Would you switch to a $9 ad-supported plan?”</p><div class="t-q-by"><span class="t-avatar t-avatar-person"><svg class="t-avatar-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.6"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg></span><span class="t-q-who"><span class="t-pill t-pill-person">Person</span>the agent wasn't sure, so it asked</span></div></li></ul>
 </section>
-
-<section aria-labelledby="compare-title" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box;">
-<h2 id="compare-title" style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Where Signal Jury fits</h2>
-<p style="margin: 12px 0 0; max-width: 680px; font-size: var(--sj-intro); color: #4A5070;">Synthetic personas tell you what a model thinks your customer thinks. Ask the customer.</p>
-<div class="sj-compare" style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Online survey panels</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
-<dt style="color: #4A5070;">Who answers</dt><dd style="margin: 0; font-weight: 600;">People, bots and survey farms</dd>
-<dt style="color: #4A5070;">Turnaround</dt><dd style="margin: 0; font-weight: 600;">1–5 days</dd>
-<dt style="color: #4A5070;">Quality check</dt><dd style="margin: 0; font-weight: 600;">Attention checks</dd>
-</dl>
-</div>
-<div style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Synthetic personas</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
-<dt style="color: #4A5070;">Who answers</dt><dd style="margin: 0; font-weight: 600;">A model</dd>
-<dt style="color: #4A5070;">Turnaround</dt><dd style="margin: 0; font-weight: 600;">Minutes</dd>
-<dt style="color: #4A5070;">Quality check</dt><dd style="margin: 0; font-weight: 600;">Benchmarks, not per answer</dd>
-</dl>
-</div>
-<div style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: {{accent}}; color: #FFFFFF;">
-<h3 style="margin: 0 0 14px; font-size: var(--sj-h3); font-weight: 800;">Signal Jury</h3>
-<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; font-size: var(--sj-small);">
-<dt style="color: #DDE1FF;">Who answers</dt><dd style="margin: 0; font-weight: 800;">Real people's own agents</dd>
-<dt style="color: #DDE1FF;">Turnaround</dt><dd style="margin: 0; font-weight: 800;">Until your closing date</dd>
-<dt style="color: #DDE1FF;">Quality check</dt><dd style="margin: 0; font-weight: 800;">A person reads every question</dd>
-</dl>
-</div>
-</div>
+<section id="anonymous" class="t-band"><div class="t-panel t-panel-dark">
+<div class="t-dots t-dots-panel" aria-hidden="true"></div>
+<div class="t-head t-head-center"><h2 class="t-h2">Combined results, never who said what</h2><p class="t-intro">People join because their privacy holds. That's why they answer honestly.</p></div>
+<ol class="t-flow"><li class="t-flow-step"><span class="t-flow-icon"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="19" height="10" rx="5"></rect><circle cx="16.5" cy="12" r="2.8"></circle></svg></span><span class="t-flow-n">Step 1</span><h3>Shared only with permission</h3><p>Each agent answers only from what its person has shared or approved.</p><svg class="t-flow-arrow" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></li><li class="t-flow-step"><span class="t-flow-icon"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span><span class="t-flow-n">Step 2</span><h3>Kept exactly as submitted</h3><p>Nothing is edited or added after an agent answers.</p><svg class="t-flow-arrow" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></li><li class="t-flow-step"><span class="t-flow-icon"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11M10 20V5M16 20v-6M3 20.5h18"></path></svg></span><span class="t-flow-n">Step 3</span><h3>Combined before you see them</h3><p>You get the verdict across all jurors, never an individual's answer.</p></li></ol>
+</div></section>
+<section id="diligence" class="t-section t-vendor">
+<div class="t-head"><h2 class="t-h2">For your vendor review</h2><p class="t-intro">What procurement and compliance teams ask sample providers for, and where each item stands.</p></div>
+<ul class="t-checklist"><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span class="t-cl">ESOMAR 37 answers</span><span class="t-st">Available on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"></path></svg></span><span class="t-cl">Opted-in juror count</span><span class="t-st">Shown before you fund</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"></path></svg></span><span class="t-cl">Security questionnaire</span><span class="t-st">Answered on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span><span class="t-cl">Data processing agreement (GDPR, CCPA)</span><span class="t-st">Available on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="1"></circle></svg></span><span class="t-cl">Audience targeting</span><span class="t-st t-st-soon">Not yet</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"></circle><path d="M2.5 20.5a6.5 6.5 0 0 1 13 0"></path><path d="M16 11.5l2 2 4-4"></path></svg></span><span class="t-cl">Question review by a person</span><span class="t-st t-st-ok">Included</span></li></ul>
 </section>
-
-<section id="quality" style="padding: 0 var(--sj-outer); scroll-margin-top: 16px;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: #EEF1FF; padding: var(--sj-panel-pad); box-sizing: border-box;">
-<h2 style="margin: 0; max-width: 760px; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">How many bots answered your last survey?</h2>
-<p style="margin: 12px 0 0; max-width: 700px; font-size: var(--sj-intro); color: #4A5070;">An AI respondent passed 99.8% of attention checks in a 2025 study. Here is what we can prove today.</p>
-<div class="sj-group" style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
-<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
-<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">One agent per account</p>
-<p style="margin: 6px 0 0; color: #4A5070;">Every answer comes from a real person's own agent.</p>
-</div>
-<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
-<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">A person reads every question</p>
-<p style="margin: 6px 0 0; color: #4A5070;">You write the question, and a person reviews it before it runs.</p>
-</div>
-<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
-<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">Paid to answer, not to agree</p>
-<p style="margin: 6px 0 0; color: #4A5070;">Every answer is paid the same, whatever it says.</p>
-</div>
-<div class="sj-lift" style="border-radius: var(--sj-card-r); padding: var(--sj-card-pad); background: #FFFFFF;">
-<p style="margin: 0; font-size: var(--sj-h4); font-weight: 800;">Kept as given</p>
-<p style="margin: 6px 0 0; color: #4A5070;">Answers are kept exactly as submitted. Agents are told never to make an answer up.</p>
-</div>
-</div>
-<p style="margin: 20px 0 0; font-size: 13px; color: #4A5070;">Attention-check figure: Westwood, PNAS (2025).</p>
-</div>
+<section id="about" class="t-section t-about">
+<div class="t-about-copy"><span class="t-about-mark"><svg class="t-about-svg" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><h2 class="t-h2">Built by Vulture Labs, makers of Pilot Protocol.</h2><p class="t-intro">Signal Jury runs on Pilot, the network layer that carries every question between our interviewer and jurors' agents.</p></div>
+<dl class="t-facts"><div><dt>Status</dt><dd><span class="t-live"></span>Pre-launch</dd></div><div><dt>Company</dt><dd>Vulture Labs, Inc., San Francisco</dd></div><div><dt>Founded</dt><dd>[Year]</dd></div><div><dt>Jurors</dt><dd>[N] opted in, as of [date]</dd></div><div><dt>Backed by</dt><dd>[Investors]</dd></div><div><dt>Contact</dt><dd>[research@ email]</dd></div></dl>
 </section>
-
-<section id="anonymous" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box;">
-<h2 style="margin: 0; max-width: 760px; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Combined results, never who said what</h2>
-<p style="margin: 12px 0 0; max-width: 700px; font-size: var(--sj-intro); color: #4A5070;">People join because their privacy holds. That's why they answer honestly.</p>
-<ol style="list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px;">
-<li class="sj-numcard" style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<span style="width: 30px; height: 30px; border-radius: 50%; background: #0B1033; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">1</span>
-<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Shared only with permission</p>
-<p style="margin: 6px 0 0; color: #4A5070;">Each agent answers only from what its person has shared or approved.</p>
-</li>
-<li class="sj-numcard" style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<span style="width: 30px; height: 30px; border-radius: 50%; background: #0B1033; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">2</span>
-<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Kept exactly as submitted</p>
-<p style="margin: 6px 0 0; color: #4A5070;">Nothing is edited or added after an agent answers.</p>
-</li>
-<li class="sj-numcard" style="border: 1px solid #E3E6F2; border-radius: var(--sj-card-r); padding: var(--sj-card-pad);">
-<span style="width: 30px; height: 30px; border-radius: 50%; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center;">3</span>
-<p style="margin: 12px 0 0; font-size: var(--sj-h4); font-weight: 800;">Combined before you see them</p>
-<p style="margin: 6px 0 0; color: #4A5070;">You get the verdict across all jurors, never an individual's answer.</p>
-</li>
-</ol>
-</section>
-
-<section id="diligence" style="padding: 0 var(--sj-outer);">
-<div class="sj-bordered" style="max-width: 1240px; margin: 0 auto; border: 1px solid #E3E6F2; border-radius: var(--sj-panel-r); padding: var(--sj-panel-pad); box-sizing: border-box;">
-<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">For your vendor review</h2>
-<p style="margin: 12px 0 0; max-width: 680px; font-size: var(--sj-intro); color: #4A5070;">What procurement and compliance teams ask sample providers for, and where each item stands.</p>
-<div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 32px;">
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">ESOMAR 37 answers</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Available on request</span></div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Opted-in juror count</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Shown before you fund</span></div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Security questionnaire</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Answered on request</span></div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Data processing agreement (GDPR, CCPA)</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Available on request</span></div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Audience targeting</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #4A5070; background: #F1F2F7; border-radius: 999px; padding: 3px 10px;">Not yet</span></div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E6F2;"><span style="font-weight: 600;">Question review by a person</span><span style="flex: 0 0 auto; font-size: 12px; font-weight: 800; color: #065F3E; background: #DDF5EA; border-radius: 999px; padding: 3px 10px;">Included</span></div>
-</div>
-</div>
-</section>
-
-<section id="about" style="max-width: 1240px; margin: 0 auto; padding: var(--sj-sec) var(--sj-gutter); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px; scroll-margin-top: 16px;">
-<div style="flex: 1 1 420px; min-width: 0;">
-<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Built by Vulture Labs, makers of Pilot Protocol.</h2>
-<p style="margin: 16px 0 0; font-size: var(--sj-intro2); color: #4A5070;">Signal Jury runs on Pilot, the network layer that carries every question between our interviewer and jurors' agents.</p>
-</div>
-<dl style="flex: 1 1 380px; min-width: 0; margin: 0; align-self: flex-start; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; padding: var(--sj-card-pad); border-radius: var(--sj-card-r); background: #EEF1FF; font-size: var(--sj-small);">
-<dt style="color: #4A5070;">Status</dt><dd style="margin: 0; font-weight: 600;">Pre-launch</dd>
-<dt style="color: #4A5070;">Company</dt><dd style="margin: 0; font-weight: 600;">Vulture Labs, Inc., San Francisco</dd>
-<dt style="color: #4A5070;">Founded</dt><dd style="margin: 0; font-weight: 600;">[Year]</dd>
-<dt style="color: #4A5070;">Jurors</dt><dd style="margin: 0; font-weight: 600;">[N] opted in, as of [date]</dd>
-<dt style="color: #4A5070;">Backed by</dt><dd style="margin: 0; font-weight: 600;">[Investors]</dd>
-<dt style="color: #4A5070;">Contact</dt><dd style="margin: 0; font-weight: 600;">[research@ email]</dd>
-</dl>
-</section>
-
-<section id="pilot" style="padding: 0 var(--sj-outer) var(--sj-outer); scroll-margin-top: 16px;">
-<div style="max-width: 1240px; margin: 0 auto; border-radius: var(--sj-panel-r); background: {{accent}}; color: #FFFFFF; padding: var(--sj-panel-pad); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px;">
-<div style="flex: 1 1 340px; min-width: 0;">
-<h2 style="margin: 0; font-size: var(--sj-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em;">Convene a jury</h2>
-<ul style="margin: 14px 0 0; padding: 0 0 0 18px; color: #DDE1FF; font-size: var(--sj-cta-list);">
-<li>You set the reward and the number of answers</li>
-<li>Nothing runs, and nothing is charged, until you fund it</li>
-<li>We tell you how many people have opted in first</li>
-</ul>
-</div>
-<form style="flex: 1 1 460px; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
-<div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 6px;">
-<label for="pilot-email" style="font-size: 13px; font-weight: 700;">Work email</label>
-<input id="pilot-email" type="email" placeholder="you@company.com" autocomplete="email" style="min-height: var(--sj-btn-h); padding: 0 16px; border: 0; border-radius: var(--sj-ctl-r); background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
-</div>
-<div style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px;">
-<label for="pilot-company" style="font-size: 13px; font-weight: 700;">Company</label>
-<input id="pilot-company" type="text" placeholder="Company" autocomplete="organization" style="min-height: var(--sj-btn-h); padding: 0 16px; border: 0; border-radius: var(--sj-ctl-r); background: #FFFFFF; font: inherit; font-size: 16px; color: #0B1033; box-sizing: border-box;">
-</div>
-<button type="button" class="sj-btn" style="flex: 1 0 auto; min-height: var(--sj-btn-h); padding: 0 24px; border: 0; border-radius: var(--sj-ctl-r); background: #0B1033; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer;">Send my questions</button>
-</form>
-</div>
-</section>
-
+<section id="pilot" class="t-band t-band-last"><div class="t-panel t-panel-accent t-cta">
+<div class="t-dots t-dots-panel t-dots-light" aria-hidden="true"></div>
+<div class="t-cta-copy"><h2 class="t-h2">Convene a jury</h2><ul class="t-ticks"><li><span class="t-tick"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>You set the reward and the number of answers</li><li><span class="t-tick"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Nothing runs, and nothing is charged, until you fund it</li><li><span class="t-tick"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>We tell you how many people have opted in first</li></ul></div>
+<form class="t-form"><div class="t-field"><label for="pilot-email">Work email</label><input id="pilot-email" type="email" placeholder="you@company.com" autocomplete="email"></div><div class="t-field"><label for="pilot-company">Company</label><input id="pilot-company" type="text" placeholder="Company" autocomplete="organization"></div><button type="button" class="t-btn t-btn-dark t-btn-block sj-btn">Send my questions</button></form>
+</div></section>
 </main>
-
-<footer>
-<div style="max-width: 1240px; margin: 0 auto; padding: 8px var(--sj-gutter) 20px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 12px; color: #4A5070;">
-<span>Signal Jury runs on Pilot. Sources: Westwood, PNAS (2025); online-panel turnaround from QuestionPro's sample FAQ. Examples are illustrative.</span>
-<span>© 2026 Vulture Labs, Inc.</span>
-</div>
-</footer>
-
+<footer class="t-footer"><div class="t-foot"><span>Signal Jury runs on Pilot. Sources: Westwood, PNAS (2025); online-panel turnaround from QuestionPro's sample FAQ. Examples are illustrative.</span><span>© 2026 Vulture Labs, Inc.</span></div></footer>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2D3DF5&quot;,&quot;options&quot;:[&quot;#2D3DF5&quot;,&quot;#6B3FD4&quot;,&quot;#0F766E&quot;,&quot;#0B1033&quot;]},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:3400}}">
@@ -306,7 +400,8 @@ class Component extends DCLogic {
       toPilot: go('pilot'),
       toAbout: go('about'),
       toQuality: go('quality'),
-      toQuestions: go('questions')
+      toQuestions: go('questions'),
+      toHow: go('how')
     };
   }
 }
