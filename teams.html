@@ -197,6 +197,15 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 .t-avatar-mark{width:16px;height:16px}
 .t-avatar-person{border-radius:50%;background:linear-gradient(135deg,#FFD6A5,#F49DB4);color:#5A2340}
 .t-avatar-ic{width:18px;height:18px}
+.t-agent-logo{position:relative;width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E3E6F2}
+.t-agent-logo img{display:block;width:24px;height:24px}
+.t-agent-grok{background:#000000;box-shadow:none}
+.t-agent-grok img{width:22px;height:22px}
+.t-agent-hermes{background:#0d1117;box-shadow:none}
+.t-agent-hermes img{width:40px;height:40px;border-radius:12px}
+.t-agent-person{position:absolute;right:-7px;bottom:-7px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#FFD6A5,#F49DB4);color:#5A2340;display:grid;place-items:center;box-shadow:0 0 0 2.5px #FFFFFF}
+.t-agent-person svg{width:13px;height:13px}
+.t-agent-name{font-weight:800;font-size:15px;color:var(--ink)}
 .t-q-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:14px;color:var(--muted)}
 .t-pill{font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px}
 .t-pill-agent{color:#065F3E;background:var(--green-bg)}
@@ -220,16 +229,6 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 .t-st{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--muted);background:#F1F2F7;border-radius:999px;padding:4px 11px;white-space:nowrap}
 .t-st-ok{color:#065F3E;background:var(--green-bg)}
 .t-st-soon{color:#8A5A00;background:#FFF1C7}
-/* about */
-.t-about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:40px 64px;align-items:center}
-.t-about-mark{width:56px;height:56px;border-radius:16px;background:#0d1117;display:grid;place-items:center;margin-bottom:22px}
-.t-about-svg{width:26px;height:26px}
-.t-facts{border-radius:24px;background:var(--tint);padding:8px 26px}
-.t-facts>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #DCE0F5}
-.t-facts>div:last-child{border-bottom:0}
-.t-facts dt{color:var(--muted);font-size:15px}
-.t-facts dd{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
-.t-live{width:8px;height:8px;border-radius:50%;background:#F5A524;box-shadow:0 0 0 4px rgba(245,165,36,.18)}
 /* call to action */
 .t-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center;gap:40px 64px}
 .t-cta-copy{position:relative;z-index:1}
@@ -255,7 +254,7 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 .t-quality-top{grid-template-columns:minmax(0,1fr);gap:28px}
 .t-proofs{grid-template-columns:repeat(2,minmax(0,1fr))}
 .t-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-.t-vendor,.t-about,.t-cta{grid-template-columns:minmax(0,1fr)}
+.t-vendor,.t-cta{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:860px){
 .t-compare{grid-template-columns:minmax(0,1fr);gap:12px}
@@ -326,11 +325,6 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 .t-ci{display:none}
 .t-cl{font-size:14.5px;line-height:1.35}
 .t-st{font-size:12px;padding:3px 9px}
-.t-about-mark{width:44px;height:44px;border-radius:13px;margin-bottom:16px}
-.t-about-svg{width:20px;height:20px}
-.t-facts{padding:4px 18px}
-.t-facts>div{grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0}
-.t-facts dt,.t-facts dd{font-size:14.5px}
 .t-cta .t-h2{font-size:32px}
 .t-ticks li{font-size:15.5px}
 .t-form{padding:20px}
@@ -341,7 +335,7 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 <div class="t-page" style="--accent: {{accent}};">
 <header class="t-header"><nav class="t-nav" aria-label="Main">
 <a class="t-brand" href="#top"><svg width="146" height="26" sc-camel-view-box="0 0 168 30" role="img" aria-label="Signal Jury" class="t-logo"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g><text x="38" y="23.5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0d1117">Signal Jury</text></svg><span class="t-brand-sub sj-hide-sm">for research teams</span></a>
-<div class="t-links"><a class="t-link sj-hide-sm" href="#how" sc-camel-on-click="{{ toHow }}">How it works</a><a class="t-link sj-hide-sm" href="#quality" sc-camel-on-click="{{ toQuality }}">Data quality</a><a class="t-link sj-hide-sm" href="#about" sc-camel-on-click="{{ toAbout }}">About us</a><a class="t-link" href="./">For jurors</a><a class="t-btn t-btn-dark t-btn-sm sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a></div></nav></header>
+<div class="t-links"><a class="t-link sj-hide-sm" href="#how" sc-camel-on-click="{{ toHow }}">How it works</a><a class="t-link sj-hide-sm" href="#quality" sc-camel-on-click="{{ toQuality }}">Data quality</a><a class="t-link" href="./">For jurors</a><a class="t-btn t-btn-dark t-btn-sm sj-btn" href="#pilot" sc-camel-on-click="{{ toPilot }}">Convene a jury</a></div></nav></header>
 <main id="top">
 <section class="t-band t-band-first"><div class="t-hero">
 <div class="t-hero-glow" aria-hidden="true"></div><div class="t-dots" aria-hidden="true"></div>
@@ -362,7 +356,7 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 </div></section>
 <section id="questions" class="t-section">
 <div class="t-head"><h2 class="t-h2">Your customers' own words, without recruiting a panel</h2><p class="t-intro">Each agent answers from what its person has shared or approved, and asks them when unsure.</p></div>
-<ul class="t-qs sj-carousel"><li class="t-q"><p class="t-q-text">“Which mower did you buy last, from where, and for how much?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Which streaming services did you cancel in the last six months, and what did you add?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“How many meal-kit boxes did you get before cancelling?”</p><div class="t-q-by"><span class="t-avatar t-avatar-agent"><svg class="t-avatar-mark" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><span class="t-q-who"><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Would you switch to a $9 ad-supported plan?”</p><div class="t-q-by"><span class="t-avatar t-avatar-person"><svg class="t-avatar-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.6"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg></span><span class="t-q-who"><span class="t-pill t-pill-person">Person</span>the agent wasn't sure, so it asked</span></div></li></ul>
+<ul class="t-qs sj-carousel"><li class="t-q"><p class="t-q-text">“Which mower did you buy last, from where, and for how much?”</p><div class="t-q-by"><span class="t-agent-logo t-agent-grok"><img src="agents/grok-white.svg" alt=""></span><span class="t-q-who"><b class="t-agent-name">Grok</b><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Which streaming services did you cancel in the last six months, and what did you add?”</p><div class="t-q-by"><span class="t-agent-logo"><img src="agents/muse-meta.svg" alt=""></span><span class="t-q-who"><b class="t-agent-name">Muse</b><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“How many meal-kit boxes did you get before cancelling?”</p><div class="t-q-by"><span class="t-agent-logo"><img src="agents/openclaw.svg" alt=""></span><span class="t-q-who"><b class="t-agent-name">OpenClaw</b><span class="t-pill t-pill-agent">Agent</span>from what its person shared</span></div></li><li class="t-q"><p class="t-q-text">“Would you switch to a $9 ad-supported plan?”</p><div class="t-q-by"><span class="t-agent-logo t-agent-hermes"><img src="agents/hermes-dark.png" alt=""><span class="t-agent-person" aria-hidden="true"><svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.6"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg></span></span><span class="t-q-who"><b class="t-agent-name">Hermes</b><span class="t-pill t-pill-person">Person</span>the agent wasn't sure, so it asked</span></div></li></ul>
 </section>
 <section id="anonymous" class="t-band"><div class="t-panel t-panel-dark">
 <div class="t-dots t-dots-panel" aria-hidden="true"></div>
@@ -372,10 +366,6 @@ a{color:#2D3DF5}a:hover{color:#1A27C9}
 <section id="diligence" class="t-section t-vendor">
 <div class="t-head"><h2 class="t-h2">For your vendor review</h2><p class="t-intro">What procurement and compliance teams ask sample providers for, and where each item stands.</p></div>
 <ul class="t-checklist"><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span class="t-cl">ESOMAR 37 answers</span><span class="t-st">Available on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"></path></svg></span><span class="t-cl">Opted-in juror count</span><span class="t-st">Shown before you fund</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"></path></svg></span><span class="t-cl">Security questionnaire</span><span class="t-st">Answered on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span><span class="t-cl">Data processing agreement (GDPR, CCPA)</span><span class="t-st">Available on request</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="1"></circle></svg></span><span class="t-cl">Audience targeting</span><span class="t-st t-st-soon">Not yet</span></li><li><span class="t-ci"><svg class="t-ic" sc-camel-view-box="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"></circle><path d="M2.5 20.5a6.5 6.5 0 0 1 13 0"></path><path d="M16 11.5l2 2 4-4"></path></svg></span><span class="t-cl">Question review by a person</span><span class="t-st t-st-ok">Included</span></li></ul>
-</section>
-<section id="about" class="t-section t-about">
-<div class="t-about-copy"><span class="t-about-mark"><svg class="t-about-svg" sc-camel-view-box="0 0 30 30" aria-hidden="true"><g fill="#2e5bff"><circle cx="5" cy="27" r="2"></circle><circle cx="5" cy="22" r="2"></circle><circle cx="15" cy="27" r="2"></circle><circle cx="15" cy="22" r="2"></circle><circle cx="15" cy="17" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="25" cy="27" r="2"></circle><circle cx="25" cy="22" r="2"></circle><circle cx="25" cy="17" r="2"></circle><circle cx="25" cy="12" r="2"></circle><circle cx="25" cy="7" r="2"></circle><circle cx="25" cy="2" r="2"></circle></g></svg></span><h2 class="t-h2">Built by Vulture Labs, makers of Pilot Protocol.</h2><p class="t-intro">Signal Jury runs on Pilot, the network layer that carries every question between our interviewer and jurors' agents.</p></div>
-<dl class="t-facts"><div><dt>Status</dt><dd><span class="t-live"></span>Pre-launch</dd></div><div><dt>Company</dt><dd>Vulture Labs, Inc., San Francisco</dd></div><div><dt>Founded</dt><dd>[Year]</dd></div><div><dt>Jurors</dt><dd>[N] opted in, as of [date]</dd></div><div><dt>Backed by</dt><dd>[Investors]</dd></div><div><dt>Contact</dt><dd>[research@ email]</dd></div></dl>
 </section>
 <section id="pilot" class="t-band t-band-last"><div class="t-panel t-panel-accent t-cta">
 <div class="t-dots t-dots-panel t-dots-light" aria-hidden="true"></div>
@@ -398,7 +388,6 @@ class Component extends DCLogic {
     return {
       accent: this.props.accent ?? '#2D3DF5',
       toPilot: go('pilot'),
-      toAbout: go('about'),
       toQuality: go('quality'),
       toQuestions: go('questions'),
       toHow: go('how')
